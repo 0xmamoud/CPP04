@@ -1,7 +1,8 @@
 #include "Dog.hpp"
 
-Dog::Dog(): type("Dog") {
+Dog::Dog() {
 	std::cout << "Dog constructor called" << std::endl;
+	this->type = "Dog";
 }
 
 Dog::Dog(const Dog &copy) {
@@ -22,5 +23,5 @@ Dog::~Dog() {
 }
 
 void Dog::makeSound(void) const {
-	std::cout << "Meow Meow" << std::endl;
+	std::cout << "Wouf Wouf" << std::endl;
 }
