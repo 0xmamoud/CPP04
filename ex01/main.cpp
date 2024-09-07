@@ -62,8 +62,7 @@ int main()
 	std::cout << "--DEEP COPY--" << std::endl << std::endl;
 
 	const Dog *original = new Dog();
-	const Dog *copy(original);
-
+	const Dog *copy = new Dog(*original);
 	delete original;
 	std::cout << copy->get_idea(19) << std::endl;
 	delete copy;
