@@ -30,22 +30,26 @@ MateriaSource::~MateriaSource() {
 }
 
 void MateriaSource::learnMateria(AMateria *m) {
-	if (!m)
-		return;
-	for (int i = 0; i < 4; i++) {
-		if (!this->_materias[i]) {
-			this->_materias[i] = m;
-			std::cout << "Learned " << m->getType() << " at index " << i << std::endl;
-			return;
-		}
-	}
-	std::cout << "Inventory is full" << std::endl;
+    if (!m)
+        return;
+    for (int i = 0; i < 4; i++) {
+        if (!this->_materias[i]) {
+            this->_materias[i] = m;
+            std::cout << "Learned " << m->getType() << " at index " << i << std::endl;
+            return;
+        }
+    }
+    std::cout << "Inventory is full" << std::endl;
+    delete m;
 }
 
 AMateria *MateriaSource::createMateria(std::string const &type) {
-	if (type == "ice")
-		return new Ice();
-	else if (type == "cure")
-		return new Cure();
-	return NULL;
+	for (int i = 0; i < 4; i++) {
+		if (this->_materias[i] && this->_materias[i]->getType() == type) {
+			std::cout << "Created " << type << " at index " << i << std::endl;
+			return this->_materias[i]->clone();
+		}
+	}
+	std::cout << "Invalid type" << std::endl;
+	return NULL;	
 }

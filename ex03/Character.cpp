@@ -47,7 +47,6 @@ std::string const &Character::getName() const {
 void Character::equip(AMateria *m) {
 	if (!m)
 		return;
-
 	for (int i = 0; i < 4; i++) {
 		if (this->inventory[i] == m) {
 			std::cout << "Already equipped" << std::endl;
@@ -60,6 +59,7 @@ void Character::equip(AMateria *m) {
 		}
 	}
 	std::cout << "Inventory is full" << std::endl;
+	delete m;
 }
 
 void Character::unequip(int idx) {
@@ -67,8 +67,10 @@ void Character::unequip(int idx) {
 		std::cout << "Invalid index" << std::endl;
 		return;
 	}
-	if (this->ground[7])
+	if (this->ground[7]) {
 		std::cout << "Ground is full" << std::endl;
+		return;
+	}	
 	else {
 		for (int i = 0; i < 8; i++) {
 			if (!this->ground[i]) {

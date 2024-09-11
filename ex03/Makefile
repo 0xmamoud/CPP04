@@ -1,8 +1,8 @@
 
 NAME = materia 
 
-CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
+CC = c++ -g
+FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM	= rm -rf
 
 HEADER = AMateria.hpp \
